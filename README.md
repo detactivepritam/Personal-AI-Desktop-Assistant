@@ -39,9 +39,10 @@
   - Quick access to frequently used applications
   
 - **📊 Information Retrieval**
-  - Real-time weather updates
+  - Real-time weather updates with OpenWeatherMap API
   - Current time and date information
-  - Web searches with AI-powered responses
+  - Web searches with intelligent responses
+  - Location-based weather forecasting
 
 ### 👤 Personalized Assistance
 
@@ -79,15 +80,17 @@
 | Component | Technology |
 |-----------|------------|
 | **Language** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) |
-| **Framework** | Flask / FastAPI |
-| **Speech Processing** | pyttsx3, gTTS, SpeechRecognition |
-| **AI Integration** | OpenAI API |
+| **Web Framework** | Eel for desktop web apps |
+| **Speech Processing** | pyttsx3, SpeechRecognition |
+| **Weather API** | OpenWeatherMap API |
+| **HTTP Requests** | requests library |
 
 ### 🎨 Frontend
 | Component | Technology |
 |-----------|------------|
-| **GUI Framework** | PyQt5 / Electron |
-| **Interface** | User-friendly desktop application |
+| **Web Interface** | HTML5, CSS3, JavaScript |
+| **GUI Framework** | Eel (Python to Web) |
+| **Interface** | Modern responsive web design |
 
 ### 💾 Database
 | Component | Technology |
@@ -103,14 +106,15 @@
 
 - Python 3.8 or higher
 - pip package manager
-- OpenAI API key
+- OpenWeatherMap API key (free)
+- Microphone for voice commands
 
 ### 🔽 Step-by-Step Setup
 
 1. **📥 Clone the Repository**
    ```bash
-   git clone https://github.com/simrkadak/personal-ai-desktop-assistant.git
-   cd personal-ai-desktop-assistant
+   git clone https://github.com/detactivepritam/Personal-AI-Desktop-Assistant.git
+   cd Personal-AI-Desktop-Assistant
    ```
 
 2. **📦 Install Dependencies**
@@ -120,14 +124,19 @@
 
 3. **🔑 Set Up API Keys**
    
-   Create a `.env` file in the project root:
-   ```env
-   OPENAI_API_KEY=your_api_key_here
+   Get your free OpenWeatherMap API key:
+   - Visit: https://openweathermap.org/api
+   - Sign up for a free account
+   - Get your API key from the dashboard
+   
+   Update `command.py`:
+   ```python
+   OPENWEATHER_API_KEY = "your_actual_api_key_here"
    ```
 
 4. **🚀 Run the Application**
    ```bash
-   python main.py
+   python run.py
    ```
 
 ---
@@ -145,16 +154,75 @@
 | Command Type | Example |
 |--------------|---------|
 | **App Launch** | *"Open YouTube"* |
-| **Information** | *"What's the weather today?"* |
-| **Knowledge** | *"What is the capital of France?"* |
-| **System** | *"Increase volume to 80%"* |
-| **Schedule** | *"Remind me to call John at 3 PM"* |
+| **Weather** | *"Weather in London"* |
+| **Information** | *"What's the time?"* |
+| **Search** | *"Search for Python tutorials"* |
+| **Media** | *"Play classical music"* |
 
 ### 🎨 Customization
 
-- **🎯 Personalized Commands**: Create custom voice shortcuts
-- **🎨 Theme Selection**: Choose from multiple UI themes
-- **📊 Usage Analytics**: Track and optimize your productivity
+- **🎯 Voice Commands**: Use natural language for all interactions
+- **🌤️ Weather Integration**: Get real-time weather for any city
+- **🎵 Media Control**: YouTube integration for music and videos
+- **📊 Web Search**: Intelligent Google search integration
+
+---
+
+## 🌤️ Weather Feature
+
+Get real-time weather information for any city worldwide!
+
+### Weather Commands:
+- *"Weather in [city name]"*
+- *"Weather of [city name]"*
+- *"Weather for [city name]"*
+- Just say *"weather"* and specify the city when asked
+
+### Setup:
+1. Get free API key from [OpenWeatherMap](https://openweathermap.org/api)
+2. Replace `OPENWEATHER_API_KEY` in `command.py` with your key
+3. Start using weather commands immediately!
+
+---
+
+## 🎮 Available Commands
+
+### 🌐 Web & Applications
+- *"Open YouTube"* - Opens YouTube
+- *"Open Google"* - Opens Google Search
+- *"Search for [topic]"* - Google search
+
+### 🌤️ Weather Information
+- *"Weather in Mumbai"* - Get Mumbai weather
+- *"Weather of London"* - Get London weather
+- *"What's the weather like?"* - Ask for city
+
+### ⏰ Time & Date
+- *"What's the time?"* - Current time
+- *"Tell me the time"* - Current time
+
+### 🎵 Media & Entertainment
+- *"Play [song/artist]"* - YouTube search
+- *"Play music"* - Open YouTube
+
+---
+
+## � Advanced Features
+
+### 🎤 Voice Recognition
+- Continuous hotword detection
+- Natural language processing
+- Multi-language support (configurable)
+
+### 🌐 Web Interface
+- Modern responsive design
+- Real-time command feedback
+- Voice and text input options
+
+### 🔄 Process Management
+- Dual-process architecture
+- Graceful shutdown handling
+- Error recovery mechanisms
 
 ---
 
@@ -174,6 +242,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ Star this repository if you find it helpful!**
 
-Made with ❤️ by [Personal AI Desktop Assistant Team](https://github.com/simrkadak)
+Made with ❤️ by [Personal AI Desktop Assistant Team](https://github.com/detactivepritam)
 
 </div>

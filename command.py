@@ -3,6 +3,35 @@ import speech_recognition as sr
 import eel
 import time
 import os
+import requests
+
+# Weather API Configuration
+OPENWEATHER_API_KEY = "your_api_key_here"  # Replace with your actual API key
+
+def get_weather(city):
+    """Get weather information for a city using OpenWeatherMap API."""
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+    complete_url = f"{base_url}appid={OPENWEATHER_API_KEY}&q={city}&units=metric"
+    
+    try:
+        response = requests.get(complete_url)
+        data = response.json()
+        
+        if data.get("cod") != 404:
+            main = data["main"]
+            temperature = main["temp"]
+            humidity = main["humidity"]
+            weather_desc = data["weather"][0]["description"]
+            
+            weather_report = (f"The temperature in {city} is {temperature:.1f}°C with {weather_desc}. "
+                             f"The humidity is {humidity}%.")
+            return weather_report
+        else:
+            return "City not found. Please try again."
+    except Exception as e:
+        print(f"Error fetching weather: {e}")
+        return "Sorry, I couldn't fetch the weather information."
+
 def speak(text):
     text = str(text)
     engine = pyttsx3.init('sapi5')
@@ -150,6 +179,23 @@ def allCommands(message=1):
         elif "what's the time" in query or "tell me the time" or "the time" in query:
             from engine.features import openCommand
             openCommand(query)
+        elif "weather" in query:
+            # Handle weather queries
+            if "weather in" in query:
+                city = query.split("weather in")[-1].strip()
+            elif "weather of" in query:
+                city = query.split("weather of")[-1].strip()
+            elif "weather for" in query:
+                city = query.split("weather for")[-1].strip()
+            else:
+                speak("Which city's weather would you like to know?")
+                city = takecommand()
+            
+            if city:
+                weather_info = get_weather(city)
+                speak(weather_info)
+            else:
+                speak("Sorry, I didn't catch the city name. Please try again.")
         elif "send message" in query or "phone call" in query or "video call" in query:
             from engine.features import findContact, whatsApp, makeCall, sendMessage
             contact_no, name = findContact(query)
